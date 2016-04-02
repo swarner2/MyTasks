@@ -11,33 +11,32 @@ var addTask = function(){
 	input.value = '';
 };
 
-
 var strike = function(x){
 	var taskList = document.getElementById('taskList');
 	var that = this
 	var button	= document.createElement('button');
 	var text = document.createTextNode('DEL');
-	
 	button.appendChild(text);
+
 	button.onclick = function(){
-		console.log('button click this is: ')
-		console.log(this.parentNode.parentNode)
+		//tags element to not be recreated at the top of the list
+		that.id = 'deleted';
 		document.getElementById("taskList").removeChild(that);
 		}
-	
+
+//on click of the text line through or undo line through
 	if(this.style.textDecoration === "line-through"){
 		this.style.textDecoration = "none"
 		//removes delete button
 		this.removeChild(this.childNodes[1]);
-		//move to the top of list
-		if(!del){
-			taskList.insertBefore(this, taskList.childNodes[0]);}
+		//move to the top of list if it is not being deleted
+		if (this.id !== 'deleted') {taskList.insertBefore(this, taskList.childNodes[0]);}
+		
 	}
 	else{
 		this.style.textDecoration = "line-through";
 		this.appendChild(button);
 		//move to the end of list
 		taskList.appendChild(this);
-
 	}
 }
