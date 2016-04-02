@@ -37,7 +37,7 @@ var strike = function(x){
 		this.style.textDecoration = "line-through";
 		this.appendChild(button);
 		//move to the end of list
-		taskList.appendChild(this)
+		taskList.appendChild(this);
 
 	}
 }
