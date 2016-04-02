@@ -1,15 +1,26 @@
+var addTask = function(){
+	var button = document.getElementById('addTask');
+	var input = document.getElementById('taskInput');
+	var taskList = document.getElementById('taskList');
+	var newItem = document.createElement('li');
+	var textnode = document.createTextNode(input.value);
+	newItem.class = 'task';
+	newItem.onclick = strike;
+	newItem.appendChild(textnode);
+	taskList.insertBefore(newItem, taskList.childNodes[0]);
+	input.value = '';
+};
 
 
-angular.module('myApp',['ngRoute'])
-.config(['$routeProvider',function($routeProvider){
-	$routeProvider.when('/', {
-        controller: 'homeController',
-        templateUrl: 'home.html'
-    })
-}])
-.controller('homeController', ['$scope', function($scope){
-	$scope.message = "home message";
-}])
-.controller('testController', ['$scope', function($scope){
-	$scope.foo = "lakdfj;lakfjal;dkfj";
-}])
+
+
+var strike = function(){
+	if(this.style.textDecoration === "line-through"){
+		//this.style.textDecoration = "none"
+		document.getElementById("taskList").removeChild(this);
+	}
+	else{
+		this.style.textDecoration = "line-through";
+	}
+	console.log(this)
+}
