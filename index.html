@@ -7,8 +7,14 @@
   <body>
     <div ng-app='myApp'>
       <!-- <nav ng-include="'compiled/app/navbar/template.html'"></nav> -->
-      <div>{{ 4 + 2}}</div>
-    	<div ng-view></div>
+      <div>
+        <ul id='taskList'>
+        </ul>
+      </div>
+    	<div>
+       <input id='taskInput' type="text" value=""></input>
+       <button id="addTask" onclick="addTask()">Add Task</button> 
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
